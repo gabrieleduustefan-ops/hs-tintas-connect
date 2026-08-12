@@ -106,19 +106,19 @@ const diferenciais = [
 ];
 
 const produtos = [
-  { name: "Tintas para paredes", img: tintasImg, tint: "oklch(0.585 0.192 35 / 0.55)" },
-  { name: "Tintas para áreas externas", img: heroImg, tint: "oklch(0.48 0.09 205 / 0.6)" },
-  { name: "Esmaltes", img: tintasImg, tint: "oklch(0.55 0.18 260 / 0.55)" },
-  { name: "Vernizes", img: coresImg, tint: "oklch(0.5 0.12 70 / 0.6)" },
-  { name: "Seladores", img: acessoriosImg, tint: "oklch(0.45 0.08 190 / 0.6)" },
-  { name: "Massas", img: acessoriosImg, tint: "oklch(0.5 0.06 90 / 0.6)" },
-  { name: "Texturas", img: coresImg, tint: "oklch(0.45 0.1 30 / 0.6)" },
-  { name: "Rolos e pincéis", img: acessoriosImg, tint: "oklch(0.42 0.11 250 / 0.6)" },
-  { name: "Fitas e acessórios", img: acessoriosImg, tint: "oklch(0.55 0.15 145 / 0.55)" },
+  { name: "Tintas para paredes", img: tintasImg, tint: "oklch(0.585 0.192 35 / 0.28)" },
+  { name: "Tintas para áreas externas", img: heroImg, tint: "oklch(0.48 0.09 205 / 0.28)" },
+  { name: "Esmaltes", img: tintasImg, tint: "oklch(0.55 0.18 260 / 0.28)" },
+  { name: "Vernizes", img: coresImg, tint: "oklch(0.5 0.12 70 / 0.28)" },
+  { name: "Seladores", img: acessoriosImg, tint: "oklch(0.45 0.08 190 / 0.28)" },
+  { name: "Massas", img: acessoriosImg, tint: "oklch(0.5 0.06 90 / 0.28)" },
+  { name: "Texturas", img: coresImg, tint: "oklch(0.45 0.1 30 / 0.28)" },
+  { name: "Rolos e pincéis", img: acessoriosImg, tint: "oklch(0.42 0.11 250 / 0.28)" },
+  { name: "Fitas e acessórios", img: acessoriosImg, tint: "oklch(0.55 0.15 145 / 0.28)" },
   {
     name: "Produtos para preparação de superfícies",
     img: tintasImg,
-    tint: "oklch(0.4 0.05 250 / 0.62)",
+    tint: "oklch(0.4 0.05 250 / 0.28)",
   },
 ];
 
