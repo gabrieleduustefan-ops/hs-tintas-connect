@@ -376,18 +376,10 @@ function Index() {
         </section>
 
         {/* CTA */}
-        <section className="px-4 pb-4 md:px-6">
-          <Reveal
-            className="mx-auto max-w-6xl overflow-hidden rounded-3xl px-6 py-14 text-center md:px-12 md:py-20"
-            as="section"
-          >
+        <section className="px-4 md:px-6">
+          <Reveal className="mx-auto max-w-6xl">
             <div
-              className="rounded-3xl"
-              style={{ background: "transparent" }}
-              aria-hidden="true"
-            />
-            <div
-              className="-m-6 rounded-3xl p-8 md:-m-12 md:p-16"
+              className="rounded-3xl px-6 py-14 text-center shadow-[var(--shadow-card)] md:px-12 md:py-20"
               style={{ backgroundImage: "var(--gradient-ink)" }}
             >
               <h2 className="text-3xl font-bold text-primary-foreground md:text-4xl">
