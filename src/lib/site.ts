@@ -1,6 +1,6 @@
 export const PHONE_DISPLAY = "(55) 3512-1256";
 export const PHONE_TEL = "+555535121256";
-export const WHATSAPP_NUMBER = "555535121256";
+export const WHATSAPP_NUMBER = "5555996745666";
 export const ADDRESS_LINE1 = "Av. Borges de Medeiros, 420 - Centro";
 export const ADDRESS_LINE2 = "Santa Rosa - RS, 98780-001";
 export const INSTAGRAM_URL = "https://instagram.com/hs.tintas";
