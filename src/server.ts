@@ -61,14 +61,14 @@ const LOVABLE_EDITOR_ANCESTORS =
 
 // The Lovable editor renders the app inside its own iframe, so preview hosts
 // must allow it. The published site never needs to be framed by anyone.
-function isEditorPreviewHost(hostname: string): boolean {
+export function isEditorPreviewHost(hostname: string): boolean {
   if (hostname === "localhost" || hostname === "127.0.0.1") return true;
   // Preview/dev hosts always carry a "--" segment (id-preview--<id>.lovable.app,
   // project--<id>-dev.lovable.app); published hosts and custom domains do not.
   return hostname.endsWith(".lovable.app") && hostname.includes("--");
 }
 
-function buildCsp(isPreview: boolean): string {
+export function buildCsp(isPreview: boolean): string {
   return [
     "default-src 'self'",
     "base-uri 'self'",
