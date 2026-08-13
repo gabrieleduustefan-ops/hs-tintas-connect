@@ -44,18 +44,57 @@ function isH3SwallowedErrorBody(body: string): boolean {
   }
 }
 
+// Security headers. The site is a static marketing page: the only third-party
+// embeds are Google Fonts (stylesheet) and the Google Maps iframe, so the CSP
+// is scoped to those. 'unsafe-inline' is required for the SSR hydration script
+// and Tailwind's inline style attributes; frame-ancestors keeps the Lovable
+// editor preview working while blocking clickjacking from other origins.
+const CSP = [
+  "default-src 'self'",
+  "base-uri 'self'",
+  "object-src 'none'",
+  "form-action 'self'",
+  "script-src 'self' 'unsafe-inline' https://*.lovable.app https://*.lovable.dev",
+  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+  "font-src 'self' data: https://fonts.gstatic.com",
+  "img-src 'self' data: blob: https:",
+  "connect-src 'self' https: wss:",
+  "frame-src https://www.google.com https://maps.google.com",
+  "frame-ancestors 'self' https://*.lovable.app https://*.lovable.dev https://lovable.dev",
+  "upgrade-insecure-requests",
+].join("; ");
+
+function withSecurityHeaders(response: Response): Response {
+  const headers = new Headers(response.headers);
+  const isHtml = (headers.get("content-type") ?? "").includes("text/html");
+  if (isHtml) headers.set("content-security-policy", CSP);
+  headers.set("strict-transport-security", "max-age=31536000; includeSubDomains");
+  headers.set("x-content-type-options", "nosniff");
+  headers.set("referrer-policy", "strict-origin-when-cross-origin");
+  headers.set("permissions-policy", "camera=(), microphone=(), geolocation=(), payment=()");
+  headers.set("cross-origin-opener-policy", "same-origin-allow-popups");
+  return new Response(response.body, {
+    status: response.status,
+    statusText: response.statusText,
+    headers,
+  });
+}
+
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
     try {
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);
-      return await normalizeCatastrophicSsrResponse(response);
+      return withSecurityHeaders(await normalizeCatastrophicSsrResponse(response));
     } catch (error) {
       console.error(error);
-      return new Response(renderErrorPage(), {
-        status: 500,
-        headers: { "content-type": "text/html; charset=utf-8" },
-      });
+      return withSecurityHeaders(
+        new Response(renderErrorPage(), {
+          status: 500,
+          headers: { "content-type": "text/html; charset=utf-8" },
+        }),
+      );
     }
   },
 };
+
